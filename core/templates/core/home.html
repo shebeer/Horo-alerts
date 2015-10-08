@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+    <script type='text/javascript' src='/static/js/jquery-1.11.2.min.js'></script>
+    <script type='text/javascript' src='/static/js/bootstrap.min.js'></script>
+</head>
+<style>
+    .circle-container {
+        position: relative;
+        /*width: 24em;*/
+        height: 24em;
+        /*padding: 2.8em;*/
+        /*2.8em = 2em*1.4 (2em = half the width of a link with img, 1.4 = sqrt(2))*/
+        /*border: dashed 1px;*/
+        /*border-radius: 50%;*/
+        /*margin: 1.75em auto 0;*/
+    }
+
+    .circle-container a {
+        display: block;
+        position: absolute;
+        top: 35%;
+        left: 25%;
+        width: 25em;
+        height: 4em;
+        margin: -2em;
+    }
+
+    .centerImage {
+        top: 50% !important;
+        left: 50% !important;
+    }
+
+    .circle-container img {
+        display: block;
+        /*width: 100%;*/
+    }
+
+    .deg0 {
+        transform: translate(12em);
+    }
+
+    /* 12em = half the width of the wrapper */
+    .deg30 {
+        transform: rotate(30deg) translate(12em) rotate(-30deg);
+    }
+
+    .deg60 {
+        transform: rotate(30deg) translate(12em) rotate(-60deg);
+    }
+
+    .deg90 {
+        transform: rotate(30deg) translate(12em) rotate(-90deg);
+    }
+
+    .deg120 {
+        transform: rotate(30deg) translate(12em) rotate(-120deg);
+    }
+
+    .deg150 {
+        transform: rotate(30deg) translate(12em) rotate(-150deg);
+    }
+
+    .deg180 {
+        transform: rotate(30deg) translate(12em) rotate(-180deg);
+    }
+
+    .deg210 {
+        transform: rotate(30deg) translate(12em) rotate(-210deg);
+    }
+
+    .deg240 {
+        transform: rotate(30deg) translate(12em) rotate(-240deg);
+    }
+
+    .deg270 {
+        transform: rotate(30deg) translate(12em) rotate(-270deg);
+    }
+
+    .deg300 {
+        transform: rotate(30deg) translate(12em) rotate(-300deg);
+    }
+
+    .deg330 {
+        transform: rotate(30deg) translate(12em) rotate(-330deg);
+    }
+
+    .deg360 {
+        transform: rotate(30deg) translate(12em) rotate(-360deg);
+    }
+
+</style>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">HoroscopeAlerts</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class='circle-container'>
+            <a href='#' class='centerImage'><img src='image.jpg'></a>
+            <a href='#' class='deg30'><img src='/static/images/icon_sign-40-aquarius.gif'></a>
+            <a href='#' class='deg60'><img src='/static/images/icon_sign-40-aries.gif'></a>
+            <a href='#' class='deg90'><img src='/static/images/icon_sign-40-virgo.gif'></a>
+            <a href='#' class='deg120'><img src='/static/images/icon_sign-40-cancer.gif'></a>
+            <a href='#' class='deg150'><img src='/static/images/icon_sign-40-capricorn.gif'></a>
+            <a href='#' class='deg180'><img src='/static/images/icon_sign-40-gemini.gif'></a>
+            <a href='#' class='deg210'><img src='/static/images/icon_sign-40-leo.gif'></a>
+            <a href='#' class='deg240'><img src='/static/images/icon_sign-40-libra.gif'></a>
+            <a href='#' class='deg270'><img src='/static/images/icon_sign-40-pisces.gif'></a>
+            <a href='#' class='deg300'><img src='/static/images/icon_sign-40-sagittarius.gif'></a>
+            <a href='#' class='deg330'><img src='/static/images/icon_sign-40-scorpio.gif'></a>
+            <a href='#' class='deg360'><img src='/static/images/icon_sign-40-taurus.gif'></a>
+        </div>
+    </div>
+
+    <div class="col-md-12 well" align="center" style="margin-top: 8%">
+        <div class="col-md-3">
+            <label class="" style="width: 100%">Name</label>
+            <input type="text">
+        </div>
+
+        <div class="col-md-3">
+            <label  style="width: 100%">Email</label>
+
+            <input type="text">
+        </div>
+        <div class="col-md-3">
+            <label  style="width: 100%">DOB</label>
+
+            <input type="text">
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-primary" style="margin-top: 7%">Subscribe</button>
+        </div>
+    </div>
+     <!--<div class="col-md-12" align="center" style="margin-top: 2%">-->
+    <!--</div>-->
+</div>
+
+<footer class="footer">
+<div class="col-md-4 text-left">
+© Copyright 2015, showmans.in
+</div>
+
+</footer>
+</body>
+</html>
+<script>
+
+</script>
