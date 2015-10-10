@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<style>
+    img {
+        width: 15%;
+    }
+</style>
+<div class="container">
+    <div class="col-md-12 well" align="center" style="margin-top: 8%;opacity: 0.75">
+
+        <div class="zodiacIcon row">
+            {% if status %}
+            <h1>Successfully Registered</h1>
+
+            You will get daily alerts.<br>
+
+            If you don't receive our e-mail in your inbox, please check your Bulk/Junk/Spam folder, as it
+            may end up there by mistake, and indicate that it is "Not Spam" so that future e-mails will not be blocked.
+            {% else %}
+                <h1>Already Subscribed</h1>
+
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

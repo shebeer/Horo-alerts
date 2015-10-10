@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<style>
+    img {
+        width: 10%;
+    }
+</style>
+<div class="container">
+    <div class="col-md-12 well" align="center" style="margin-top: 8%;opacity: 0.75">
+
+        <div class="zodiacIcon row">
+            <h1>{{zodiac|upper}}</h1>
+            <h3>{{today|date:"M d, Y"}}</h3>
+            {% if zodiac == 'cancer' %}
+            <img src="/static/images/Cancer-Chariot.jpg">
+            {% elif zodiac|lower == 'aquarius' %}
+            <img src="/static/images/Aquarius-Star.jpg">
+            {% elif zodiac|lower == 'aries' %}
+            <img src="/static/images/Aries-Emperor.jpg">
+            {% elif zodiac|lower == 'capricorn' %}
+            <img src="/static/images/Capricorn-Devil.jpg">
+            {% elif zodiac|lower == 'gemini' %}
+            <img src="/static/images/Gemini-Lovers.jpg">
+            {% elif zodiac|lower == 'leo' %}
+            <img src="/static/images/Leo-Strength.jpg">
+            {% elif zodiac|lower == 'libra' %}
+            <img src="/static/images/Libra-Justice.jpg">
+            {% elif zodiac|lower == 'pisces' %}
+            <img src="/static/images/Pisces-Moon.jpg">
+            {% elif zodiac|lower == 'sagittarius' %}
+            <img src="/static/images/Sagittarius-Temperance.jpg">
+            {% elif zodiac|lower == 'scorpio' %}
+            <img src="/static/images/Scorpio-Death.jpg">
+            {% elif zodiac|lower == 'taurus' %}
+            <img src="/static/images/Taurus-Hierophant.jpg">
+            {% elif zodiac|lower == 'virgo' %}
+            <img src="/static/images/Virgo-Hermit.jpg">
+            {% endif %}
+        </div>
+        <div class="prediction" style="font-size: 20px;margin: 3% 0 3% 0;">{{prediction}}</div>
+
+    </div>
+</div>
+
+
+{% endblock %}

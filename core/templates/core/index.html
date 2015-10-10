@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class='circle-container'>
+            <!--<a href='{% url "today_horoscope" "sdf" %}' title="" class='centerImage'><img src='image.jpg'></a>-->
+            <a href='{% url "today_horoscope" "Aquarius" %}' title="Aquarius"  class='deg30'><img src='/static/images/icon_sign-40-aquarius.gif'></a>
+            <a href='{% url "today_horoscope" "Aries" %}' title="Aries"  class='deg60'><img src='/static/images/icon_sign-40-aries.gif'></a>
+            <a href='{% url "today_horoscope" "Virgo" %}' title="Virgo"  class='deg90'><img src='/static/images/icon_sign-40-virgo.gif'></a>
+            <a href='{% url "today_horoscope" "Cancer" %}' title="Cancer"  class='deg120'><img src='/static/images/icon_sign-40-cancer.gif'></a>
+            <a href='{% url "today_horoscope" "Capricorn" %}' title="Capricorn"  class='deg150'><img src='/static/images/icon_sign-40-capricorn.gif'></a>
+            <a href='{% url "today_horoscope" "Gemini" %}' title="Gemini"  class='deg180'><img src='/static/images/icon_sign-40-gemini.gif'></a>
+            <a href='{% url "today_horoscope" "Leo" %}' title="Leo"  class='deg210'><img src='/static/images/icon_sign-40-leo.gif'></a>
+            <a href='{% url "today_horoscope" "Libra" %}' title="Libra"  class='deg240'><img src='/static/images/icon_sign-40-libra.gif'></a>
+            <a href='{% url "today_horoscope" "Pisces" %}' title="Pisces"  class='deg270'><img src='/static/images/icon_sign-40-pisces.gif'></a>
+            <a href='{% url "today_horoscope" "Sagittarius" %}' title="Sagittarius"  class='deg300'><img src='/static/images/icon_sign-40-sagittarius.gif'></a>
+            <a href='{% url "today_horoscope" "Scorpio" %}' title="Scorpio"  class='deg330'><img src='/static/images/icon_sign-40-scorpio.gif'></a>
+            <a href='{% url "today_horoscope" "Taurus" %}' title="Taurus"  class='deg360'><img src='/static/images/icon_sign-40-taurus.gif'></a>
+        </div>
+    </div>
+
+    <div class="col-md-12 well" align="center" style="margin-top: 8%;opacity: 0.75">
+        <div class="text-left col-md-12" style="font-size: 18px;font-weight: bold;">
+            <legend>Get free daily horoscope by email</legend> </div>
+        <form method="post" action="{% url 'subscribe'%}">
+            {% csrf_token %}
+            <div class="col-md-3">
+                <label class="" style="width: 100%">Name</label>
+                <input class="form-control" name="name" type="text" required>
+            </div>
+            <div class="col-md-3">
+                <label style="width: 100%">Email</label>
+                <input class="form-control" name="email" type="email" required>
+            </div>
+            <div class="col-md-3">
+                <label style="width: 100%">DOB</label>
+                <input class="form-control dob" name="dob" type="text" required>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" style="margin-top: 7%">Subscribe</button>
+            </div>
+        </form>
+    </div>
+    <!--<div class="col-md-12" align="center" style="margin-top: 2%">-->
+    <!--</div>-->
+</div>
+
+
+{% endblock %}

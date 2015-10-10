@@ -9,9 +9,15 @@ class Prediction(models.Model):
     zodiac = models.CharField(max_length=100)
     prediction = models.CharField(max_length=1000)
 
+    def __unicode__(self):
+        return self.zodiac
+
 class Zodiac(models.Model):
     date = models.DateTimeField(unique=True)
     zodiac = models.ManyToManyField(Prediction,related_name="zodiactoprediction")
+
+    def __unicode__(self):
+        return str(self.date)
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User,related_name="userprofiletoUser")
@@ -21,6 +27,9 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country =models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return self.user.username+' '+self.zodiac
 
 
 
