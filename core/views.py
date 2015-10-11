@@ -102,7 +102,18 @@ def get_zodiac_from_date(dob):
 def home(request):
     thread1 = Horoscope(1, "Thread-For-Horoscope")
     thread1.start()
-    return render(request, 'core/index.html')
+    today = time.strftime("%Y-%m-%d")
+    print today
+    zodiacs = Zodiac.objects.filter(date=today)
+    print zodiacs
+    predictions = 'None'
+    if zodiacs:
+        predictions =  zodiacs[0].zodiac.all()
+    context = {
+        'predictions' : predictions,
+        'today' :datetime.datetime.now(),
+    }
+    return render(request, 'core/index.html',context)
 
 def horoscope():
     while True:
@@ -113,8 +124,6 @@ def horoscope():
             date = time.strftime("%Y-%m-%d")
             if not Zodiac.objects.filter(date=date):
                 soup = BeautifulSoup(requests.get("http://www.littleastro.com/").text, 'html.parser')
-                date = soup.find('span').string
-                date = datetime.datetime.strptime(date, "%d/%m/%y")
                 content = soup.find('ul')
                 horoscopes = content.find_all('li')
                 zodiacs = {}

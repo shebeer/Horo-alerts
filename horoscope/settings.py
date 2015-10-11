@@ -87,7 +87,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'shabeersha33@gmail.com'
 EMAIL_HOST_PASSWORD = 'shebeer123'
 
-ALERT_TIME = '13:36' # HH:MM
+ALERT_TIME = '14:49' # HH:MM
 
 
 """

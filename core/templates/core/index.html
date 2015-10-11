@@ -1,27 +1,91 @@
 {% extends 'core/base.html' %}
 {% block content %}
+
+<style>
+    .sign_prediction img {
+        max-width: 200px;
+        max-height: 60px;
+        min-height: 60px;
+    }
+
+    .sign_prediction .prediction {
+        min-height: 135px;
+    }
+
+    .selected {
+        border: 3px solid;
+        border-radius: 10px 10px;
+        box-shadow: 1px 1px 7px 7px;
+    }
+
+    .signs img:hover {
+         border: 3px solid;
+        border-radius: 10px 10px;
+        box-shadow: 1px 1px 7px 7px #846D6D;
+        border-color: #846D6D;
+    }
+</style>
 <div class="container">
-    <div class="row">
-        <div class='circle-container'>
-            <!--<a href='{% url "today_horoscope" "sdf" %}' title="" class='centerImage'><img src='image.jpg'></a>-->
-            <a href='{% url "today_horoscope" "Aquarius" %}' title="Aquarius"  class='deg30'><img src='/static/images/icon_sign-40-aquarius.gif'></a>
-            <a href='{% url "today_horoscope" "Aries" %}' title="Aries"  class='deg60'><img src='/static/images/icon_sign-40-aries.gif'></a>
-            <a href='{% url "today_horoscope" "Virgo" %}' title="Virgo"  class='deg90'><img src='/static/images/icon_sign-40-virgo.gif'></a>
-            <a href='{% url "today_horoscope" "Cancer" %}' title="Cancer"  class='deg120'><img src='/static/images/icon_sign-40-cancer.gif'></a>
-            <a href='{% url "today_horoscope" "Capricorn" %}' title="Capricorn"  class='deg150'><img src='/static/images/icon_sign-40-capricorn.gif'></a>
-            <a href='{% url "today_horoscope" "Gemini" %}' title="Gemini"  class='deg180'><img src='/static/images/icon_sign-40-gemini.gif'></a>
-            <a href='{% url "today_horoscope" "Leo" %}' title="Leo"  class='deg210'><img src='/static/images/icon_sign-40-leo.gif'></a>
-            <a href='{% url "today_horoscope" "Libra" %}' title="Libra"  class='deg240'><img src='/static/images/icon_sign-40-libra.gif'></a>
-            <a href='{% url "today_horoscope" "Pisces" %}' title="Pisces"  class='deg270'><img src='/static/images/icon_sign-40-pisces.gif'></a>
-            <a href='{% url "today_horoscope" "Sagittarius" %}' title="Sagittarius"  class='deg300'><img src='/static/images/icon_sign-40-sagittarius.gif'></a>
-            <a href='{% url "today_horoscope" "Scorpio" %}' title="Scorpio"  class='deg330'><img src='/static/images/icon_sign-40-scorpio.gif'></a>
-            <a href='{% url "today_horoscope" "Taurus" %}' title="Taurus"  class='deg360'><img src='/static/images/icon_sign-40-taurus.gif'></a>
+    <div class="col-md-12 well" align="center" style="margin-top: 1%;opacity: 0.75">
+        <div class="horoscope">
+            <div class="col-md-12 ">
+                {% for x in predictions %}
+                <div id="sign_{{x.zodiac|lower}}" class="sign_prediction row" style="display: none">
+                    <h1>{{x.zodiac|upper}}</h1>
+
+                    <h3>{{today|date:"M d, Y"}}</h3>
+                    {% if x.zodiac|lower == 'cancer' %}
+                    <img src="/static/images/Cancer-Chariot.jpg">
+                    {% elif x.zodiac|lower == 'aquarius' %}
+                    <img src="/static/images/Aquarius-Star.jpg">
+                    {% elif x.zodiac|lower == 'aries' %}
+                    <img src="/static/images/Aries-Emperor.jpg">
+                    {% elif x.zodiac|lower == 'capricorn' %}
+                    <img src="/static/images/Capricorn-Devil.jpg">
+                    {% elif x.zodiac|lower == 'gemini' %}
+                    <img src="/static/images/Gemini-Lovers.jpg">
+                    {% elif x.zodiac|lower == 'leo' %}
+                    <img src="/static/images/Leo-Strength.jpg">
+                    {% elif x.zodiac|lower == 'libra' %}
+                    <img src="/static/images/Libra-Justice.jpg">
+                    {% elif x.zodiac|lower == 'pisces' %}
+                    <img src="/static/images/Pisces-Moon.jpg">
+                    {% elif x.zodiac|lower == 'sagittarius' %}
+                    <img src="/static/images/Sagittarius-Temperance.jpg">
+                    {% elif x.zodiac|lower == 'scorpio' %}
+                    <img src="/static/images/Scorpio-Death.jpg">
+                    {% elif x.zodiac|lower == 'taurus' %}
+                    <img src="/static/images/Taurus-Hierophant.jpg">
+                    {% elif x.zodiac|lower == 'virgo' %}
+                    <img src="/static/images/Virgo-Hermit.jpg">
+                    {% endif %}
+                    <div class="prediction" style="font-size: 20px;margin: 3% 0 3% 0;">{{x.prediction}}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-12 col-xs-12 iconsRow1">
+            <div class="col-md-1 col-xs-3 signs Leo"><img title="Leo" src='/static/images/icon_leo.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Libra"><img title="Libra" src='/static/images/icon_libra.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Pisces"><img title="Pisces" src='/static/images/icon_pisces.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Sagittarius"><img title="Sagittarius" src='/static/images/icon_sagittarius.jpg'>
+            </div>
+            <div class="col-md-1 col-xs-3 signs Scorpio"><img title="Scorpio" src='/static/images/icon_scorpio.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Taurus"><img title="Taurus" src='/static/images/icon_taurus.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Aquarius"><img title="Aquarius" src='/static/images/icon_aquarius.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Aries"><img title="Aries" src='/static/images/icon_aries.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Virgo"><img title="Virgo" src='/static/images/icon_virgo.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Cancer"><img title="Cancer" src='/static/images/icon_cancer.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Capricorn"><img title="Capricorn" src='/static/images/icon_capricorn.jpg'></div>
+            <div class="col-md-1 col-xs-3 signs Gemini"><img title="Gemini" src='/static/images/icon_gemini.jpg'></div>
         </div>
     </div>
 
-    <div class="col-md-12 well" align="center" style="margin-top: 8%;opacity: 0.75">
+
+    <div class="col-md-12 well" align="center" style="opacity: 0.75">
         <div class="text-left col-md-12" style="font-size: 18px;font-weight: bold;">
-            <legend>Get free daily horoscope by email</legend> </div>
+            <legend>Get free daily horoscope by email</legend>
+        </div>
         <form method="post" action="{% url 'subscribe'%}">
             {% csrf_token %}
             <div class="col-md-3">
@@ -44,6 +108,98 @@
     <!--<div class="col-md-12" align="center" style="margin-top: 2%">-->
     <!--</div>-->
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#sign_aries').show();
+        $('.Aries img').addClass('selected');
+
+        $('.Aries img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_aries').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+        });
+        $('.Leo img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_leo').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Libra img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_libra').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Pisces img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_pisces').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Sagittarius img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_sagittarius').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Scorpio img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_scorpio').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Taurus img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_taurus').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Aquarius img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_aquarius').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Virgo img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_virgo').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Cancer img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_cancer').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Capricorn img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_capricorn').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+        $('.Gemini img').on('click', function () {
+            $('.sign_prediction').hide();
+            $('#sign_gemini').show();
+            $('.signs img').removeClass('selected');
+            $(this).addClass('selected');
+
+        });
+
+    });
+</script>
 
 
 {% endblock %}
