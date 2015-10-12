@@ -138,7 +138,7 @@ def horoscope():
                 zod_object = Zodiac(date=date)
                 zod_object.save()
                 zod_object.zodiac.add(*array)
-            # send_alerts(date)
+            send_alerts(date)
 
 def send_alerts(date):
     objects = Zodiac.objects.filter(date=date)
