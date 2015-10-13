@@ -24,16 +24,19 @@
         box-shadow: 1px 1px 7px 7px #846D6D;
         border-color: #846D6D;
     }
+    .signs {
+        padding : 1%;
+    }
 </style>
 <div class="container">
-    <div class="col-md-12 well" align="center" style="margin-top: 1%;opacity: 0.75">
+    <div class="col-md-12 col-xs-12 well" align="center" style="margin-top: 1%;opacity: 0.75">
         <div class="horoscope">
             <div class="col-md-12 ">
                 {% for x in predictions %}
                 <div id="sign_{{x.zodiac|lower}}" class="sign_prediction row" style="display: none">
                     <h1>{{x.zodiac|upper}}</h1>
 
-                    <h3>{{today|date:"M d, Y"}}</h3>
+                    <h3>{{today|date:"M d, Y l"}}</h3>
                     {% if x.zodiac|lower == 'cancer' %}
                     <img src="/static/images/Cancer-Chariot.jpg">
                     {% elif x.zodiac|lower == 'aquarius' %}
@@ -65,6 +68,7 @@
             </div>
         </div>
         <div class="col-md-12 col-xs-12 iconsRow1">
+            <div class="col-md-1 col-xs-3 signs Aries"><img title="Aries" src='/static/images/icon_aries.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Leo"><img title="Leo" src='/static/images/icon_leo.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Libra"><img title="Libra" src='/static/images/icon_libra.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Pisces"><img title="Pisces" src='/static/images/icon_pisces.jpg'></div>
@@ -73,7 +77,6 @@
             <div class="col-md-1 col-xs-3 signs Scorpio"><img title="Scorpio" src='/static/images/icon_scorpio.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Taurus"><img title="Taurus" src='/static/images/icon_taurus.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Aquarius"><img title="Aquarius" src='/static/images/icon_aquarius.jpg'></div>
-            <div class="col-md-1 col-xs-3 signs Aries"><img title="Aries" src='/static/images/icon_aries.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Virgo"><img title="Virgo" src='/static/images/icon_virgo.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Cancer"><img title="Cancer" src='/static/images/icon_cancer.jpg'></div>
             <div class="col-md-1 col-xs-3 signs Capricorn"><img title="Capricorn" src='/static/images/icon_capricorn.jpg'></div>
@@ -82,8 +85,8 @@
     </div>
 
 
-    <div class="col-md-12 well" align="center" style="opacity: 0.75">
-        <div class="text-left col-md-12" style="font-size: 18px;font-weight: bold;">
+    <div class="col-md-12 well col-xs-12" align="center" style="opacity: 0.75">
+        <div class="text-left col-md-12 col-xs-12" style="font-size: 18px;font-weight: bold;">
             <legend>Get free daily horoscope by email</legend>
         </div>
         <form method="post" action="{% url 'subscribe'%}">

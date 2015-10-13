@@ -13,7 +13,7 @@ class Prediction(models.Model):
         return self.zodiac
 
 class Zodiac(models.Model):
-    date = models.DateTimeField(unique=True)
+    date = models.DateField(unique=True)
     zodiac = models.ManyToManyField(Prediction,related_name="zodiactoprediction")
 
     def __unicode__(self):
@@ -27,6 +27,7 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     country =models.CharField(max_length=100)
+    dob = models.DateField()
 
     def __unicode__(self):
         return self.user.username+' '+self.zodiac
