@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')sfp8n6ju2!c(=q1+^_yelq*&y10evau8i3$r=8_3w60f4$qz-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 ROOT_URLCONF = 'horoscope.urls'
 

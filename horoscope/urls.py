@@ -10,3 +10,5 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
 ]
+
+handler404 = 'core.views.custom_404'

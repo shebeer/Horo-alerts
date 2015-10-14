@@ -168,3 +168,6 @@ def to_days_horoscope(request,zodiac):
         'today' :datetime.datetime.now(),
     }
     return render(request,'core/subscribed.html',context)
+
+def custom_404(request):
+    return render(request,'core/404.html')
