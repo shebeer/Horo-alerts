@@ -56,11 +56,17 @@ def home(request):
     today = datetime.datetime.now()
     print today
     zodiacs = Zodiac.objects.filter(date=today)
+    now = datetime.datetime.now()
+    curr_time = str(now.hour)+':'+str(now.minute)
     predictions = 'None'
     print zodiacs
     if not zodiacs:
-        today = yesterday = datetime.datetime.now() - datetime.timedelta(hours=24)
-        zodiacs = Zodiac.objects.filter(date=yesterday)
+        print 'current_time',curr_time
+        if curr_time > '12:00':
+            thread.start_new_thread(fetch_horoscope_of_date,(today,))
+        else:
+            today = yesterday = datetime.datetime.now() - datetime.timedelta(hours=24)
+            zodiacs = Zodiac.objects.filter(date=yesterday)
     if zodiacs:
         predictions =  zodiacs[0].zodiac.all()
     else:
@@ -78,23 +84,26 @@ def horoscope():
         curr_time = str(now.hour)+':'+str(now.minute)
         if curr_time == alert_time:
             date = time.strftime("%Y-%m-%d")
-            if not Zodiac.objects.filter(date=date):
-                soup = BeautifulSoup(requests.get("http://www.littleastro.com/").text, 'html.parser')
-                content = soup.find('ul')
-                horoscopes = content.find_all('li')
-                zodiacs = {}
-                array = []
-                for signs in horoscopes:
-                    sign = signs.h3.string.split()[1]
-                    prediction = signs.find('p').string
-                    zodiacs[sign] = prediction
-                    object = Prediction(zodiac=sign, prediction=prediction)
-                    object.save()
-                    array.append(object)
-                zod_object = Zodiac(date=date)
-                zod_object.save()
-                zod_object.zodiac.add(*array)
+            fetch_horoscope_of_date(date)
             send_alerts(date)
+
+def fetch_horoscope_of_date(date):
+    if not Zodiac.objects.filter(date=date):
+        soup = BeautifulSoup(requests.get("http://www.littleastro.com/").text, 'html.parser')
+        content = soup.find('ul')
+        horoscopes = content.find_all('li')
+        zodiacs = {}
+        array = []
+        for signs in horoscopes:
+            sign = signs.h3.string.split()[1]
+            prediction = signs.find('p').string
+            zodiacs[sign] = prediction
+            object = Prediction(zodiac=sign, prediction=prediction)
+            object.save()
+            array.append(object)
+        zod_object = Zodiac(date=date)
+        zod_object.save()
+        zod_object.zodiac.add(*array)
 
 def send_alerts(date):
     objects = Zodiac.objects.filter(date=date)
@@ -170,4 +179,9 @@ def to_days_horoscope(request,zodiac):
     return render(request,'core/subscribed.html',context)
 
 def custom_404(request):
+    return render(request,'core/404.html')
+
+def fetch_horoscope(request):
+    date = time.strftime("%Y-%m-%d")
+    thread.start_new_thread(fetch_horoscope_of_date,(date,))
     return render(request,'core/404.html')
