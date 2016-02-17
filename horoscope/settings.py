@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')sfp8n6ju2!c(=q1+^_yelq*&y10evau8i3$r=8_3w60f4$qz-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = []
 
@@ -84,8 +84,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'showman.here@gmail.com'
-EMAIL_HOST_PASSWORD = 'shasha33'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 ALERT_TIME = '12:00' # HH:MM
 
